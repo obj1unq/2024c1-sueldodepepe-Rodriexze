@@ -31,3 +31,36 @@ test "Pepe cadete con bono de resultados por porcentaje, bono por presentismo no
 		pepe.faltas(1)	
 		assert.equals(23000, pepe.sueldo())
 }
+
+test "Sofía es cadete, su neto es 26000 y pepe como cadete su neto es de 20000"{
+		sofia.categoria(cadete)
+		assert.equals(26000, sofia.neto())
+		pepe.categoria(cadete)
+		assert.equals(20000, pepe.neto())
+}
+
+test "vendedor sin aumento de muchas ventas su neto es 16000, de lo contrario 20000"{
+		vendedor.activarAumentoPorMuchasVentas()
+		assert.equals(20000, vendedor.sueldo())
+		vendedor.desactivarAumentoPorMuchasVentas()
+		assert.equals(16000, vendedor.sueldo())		
+}
+
+test "medio tiempo: pepe su neto como cadete es de 20000 al aplicar medio tiempo neto pasa a ser 10000"{
+		medioTiempo.categoriaBase(cadete)
+		assert.equals(10000, medioTiempo.neto(pepe))
+}
+
+test "Pepe tiene categoría medio tiempo, tiene bono por resultados de porcentaje, y bono por presentismo demagógico. Hacer que falte una vez.el sueldo de Pepe es 11500"{
+		medioTiempo.categoriaBase(cadete)
+		pepe.bonoResultado(porcentual)
+		pepe.bonoPresentismo(demagogico)
+		pepe.faltas(1)
+		medioTiempo.neto(pepe)
+		assert.equals(11500, pepe.sueldo())
+}
+
+
+
+
+
