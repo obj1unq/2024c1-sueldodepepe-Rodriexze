@@ -21,6 +21,10 @@ object pepe {
 		tipoDeBonoResultado = _bonoResultado
 	}
 	
+	method bonoPresentismo(_bonoPresentismo){
+		bonoPresentismo = _bonoPresentismo
+	}
+	
 	method valorBonoResultado () {
 		return tipoDeBonoResultado.valor(self)
 	}
@@ -76,7 +80,7 @@ object presentismoNulo {
 
 object porcentual{
 	
-	method valor(empleado) {
+	method valor(empleado){
 		return empleado.neto() * 0.10
 	}
 }
