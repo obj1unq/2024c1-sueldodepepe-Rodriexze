@@ -1,7 +1,5 @@
 import pepe.*
 
-
-	
 test "pepe cadette con bono resultado fijo y bono presentismo normal. Falto 3 dias deberia ser su sueldo 20800 " {
 		pepe.categoria(cadete)
 		pepe.bonoResultado(fijo)
@@ -46,21 +44,32 @@ test "vendedor sin aumento de muchas ventas su neto es 16000, de lo contrario 20
 		assert.equals(16000, vendedor.sueldo())		
 }
 
-test "medio tiempo: pepe su neto como cadete es de 20000 al aplicar medio tiempo neto pasa a ser 10000"{
+test "medio tiempo:neto como cadete es de 20000 al aplicar medio tiempo neto pasa a ser 10000"{
 		medioTiempo.categoriaBase(cadete)
-		assert.equals(10000, medioTiempo.neto(pepe))
+		assert.equals(10000, medioTiempo.neto())
 }
 
 test "Pepe tiene categoría medio tiempo, tiene bono por resultados de porcentaje, y bono por presentismo demagógico. Hacer que falte una vez.el sueldo de Pepe es 11500"{
 		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
 		pepe.bonoResultado(porcentual)
 		pepe.bonoPresentismo(demagogico)
 		pepe.faltas(1)
-		medioTiempo.neto(pepe)
 		assert.equals(11500, pepe.sueldo())
 }
 
+test "Roque tiene bono por resultados monto fijo y su sueldo sera de 37800"{
+		roque.bonoResultado(fijo)
+		assert.equals(37800, roque.sueldo())
+}
 
-
-
-
+test "Ernesto tiene como compañero a Pepe, y bono por presentismo de ajuste."{
+		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.bonoResultado(porcentual)
+		pepe.bonoPresentismo(demagogico)
+		pepe.faltas(1)
+		ernesto.setCompaniero(pepe)
+		ernesto.bonoPresentismo(ajuste)
+		assert.equals(10100, ernesto.sueldo())
+}

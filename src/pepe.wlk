@@ -99,6 +99,7 @@ object roque {
 
 object ernesto {
 	
+	var bonoPresentismo = nulo
 	var companiero = pepe
 	const faltas = 0  //dejo esto como constante y no le creo un setter a faltas por que el ejercicio me dice que se sabe que ernesto no falta nunca
 	
@@ -106,8 +107,12 @@ object ernesto {
 		return companiero.neto()
 	}
 	
+	method bonoPresentismo(_bonoPresentismo){
+		bonoPresentismo = _bonoPresentismo
+	}
+	
 	method valorBonoPresentismo() {
-		return normal.valor(self)
+		return bonoPresentismo.valor(self)
 	}
 	
 	method setCompaniero(_companiero){
@@ -157,7 +162,7 @@ object medioTiempo { // no se si este objeto internamente esta bien estoy seguro
 	
 	var categoria = cadete
 	
-	method neto(empleado){
+	method neto(){
 		return categoria.neto() / 2
 	}
 	
